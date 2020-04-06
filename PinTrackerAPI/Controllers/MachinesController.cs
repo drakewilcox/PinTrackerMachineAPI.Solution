@@ -21,7 +21,7 @@ namespace PinTrackerAPI.Controllers
     public ActionResult<IEnumerable<Machine>> Get(string machineName)
     {
       var query = _db.Machines.AsQueryable();
-      
+
       if (machineName != null)
       {
         query = query.Where(mach => mach.MachineName == machineName);
@@ -38,6 +38,7 @@ namespace PinTrackerAPI.Controllers
     }
   }
 }
+
 
 
 
