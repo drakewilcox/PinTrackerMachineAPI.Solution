@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace PinTrackerAPI
 {
   public class Machine
@@ -8,5 +10,3 @@ namespace PinTrackerAPI
     public string Manufacturer { get; set; }
   }
 }
-
-
