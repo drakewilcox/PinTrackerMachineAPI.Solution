@@ -18,11 +18,31 @@ namespace PinTrackerAPI.Controllers
           _db = db;
         }
     [HttpGet]
-    public ActionResult<IEnumerable<Machine>> Get()
+    public ActionResult<IEnumerable<Machine>> Get(string machineName)
     {
-      return _db.Machines.ToList();
+      var query = _db.Machines.AsQueryable();
+      
+      if (machineName != null)
+      {
+        query = query.Where(mach => mach.MachineName == machineName);
+      }
+      return query.ToList();
+    }
+
+    [HttpGet("{id}")]
+    public ActionResult<Machine> Get(int id)
+    {
+      Machine thisMachine = _db.Machines.FirstOrDefault(mach => mach.MachineId == id);
+
+      return thisMachine;
     }
   }
 }
+
+
+
+
+
+
 
 
